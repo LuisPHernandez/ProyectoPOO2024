@@ -7,3 +7,4 @@ Software de gestión escolar
 3. Crear ambiente virtual con herramienta preferida. (virtualenv, venv, etc.)
 4. Activar ambiente virtual.
 5. Instalar librerias necesarias. (pip install -r requirements.txt)
+6. Copiar el archivo /config.py al folder /instance

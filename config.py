@@ -1,2 +1,2 @@
-ADMIN_PASSWORD = 'default_password'
-SQLALCHEMY_DATABASE_URI = '<Set in instance config.py>'
+ADMIN_PASSWORD = 'password'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///../instance/app.db'
