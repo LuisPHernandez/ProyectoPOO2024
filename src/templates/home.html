@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Homescreen</title>
+{% endblock %}
+
+{% block body %}
+<h1>Software para gestión escolar</h1>
+<form action="{{ url_for('login') }}" method="get" class="login-btn">
+    <input type="submit" value="Login">
+</form>
+{% endblock %}
