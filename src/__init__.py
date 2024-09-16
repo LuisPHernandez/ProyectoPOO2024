@@ -1,10 +1,11 @@
-from flask import Flask 
+from flask import Flask, render_template, url_for, request, redirect, flash 
 import flask_sqlalchemy
 
 # Se inicializa la aplicación Flask
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_object('config')
 app.config.from_pyfile('config.py')
+app.secret_key = 'KKhdsakhu772*#$#($)'
 
 # Inicializar la base de datos
 db = flask_sqlalchemy.SQLAlchemy(app)
@@ -15,5 +16,25 @@ with app.app_context():
     db.session.commit()
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def homescreen():
+    return render_template('home.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        usuario = model.Usuario.query.filter_by(username=username, password=password).first()
+
+        if usuario != None:
+
+            if usuario.tipo == 1:
+                return redirect(url_for('admin'))
+            elif usuario.tipo == 2:
+                return redirect(url_for('maestro'))
+            elif usuario.tipo == 3:
+                return redirect(url_for('padre'))
+        else:
+            flash('Usario o password inválido', 'error')
+
+    return render_template('login.html')
