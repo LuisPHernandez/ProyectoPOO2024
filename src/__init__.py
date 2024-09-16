@@ -50,3 +50,8 @@ def maestro():
 @app.route('/padre')
 def padre():
     return render_template('padre.html')
+
+@app.route('/logout')
+def logout():
+    flash('Has cerrado sesión exitosamente', 'info')
+    return redirect(url_for('login'))
