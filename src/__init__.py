@@ -38,3 +38,15 @@ def login():
             flash('Usario o password inválido', 'error')
 
     return render_template('login.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
+@app.route('/maestro')
+def maestro():
+    return render_template('maestro.html')
+
+@app.route('/padre')
+def padre():
+    return render_template('padre.html')
