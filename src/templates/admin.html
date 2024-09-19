@@ -6,4 +6,7 @@
 
 {% block body %}
 <h1>Administrador de sistema</h1>
-{% endblock %}
+<form action="{{ url_for('user_list') }}" method="get" class="userlist-btn">
+    <input type="submit" value="User List">
+</form>
+{% endblock %}
