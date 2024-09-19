@@ -59,4 +59,4 @@ def logout():
 @app.route("/admin/list", methods=["GET", "POST"])
 def user_list():
     data = model.Usuario.query.order_by(model.Usuario.username).all()
-    return render_template('user_list.html', data=data)
+    return render_template('user_list.html', data=data)
