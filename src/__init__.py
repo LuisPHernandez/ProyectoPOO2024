@@ -51,6 +51,11 @@ def maestro():
 def padre():
     return render_template('padre.html')
 
+@app.route('/logout')
+def logout():
+    flash('Has cerrado sesión exitosamente', 'info')
+    return redirect(url_for('login'))
+
 @app.route("/admin/list", methods=["GET", "POST"])
 def user_list():
     data = model.Usuario.query.order_by(model.Usuario.username).all()
