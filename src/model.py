@@ -39,8 +39,15 @@ def _inicializar_usuarios(*args, **kwargs):
     db.session.add(admin)
     db.session.commit()
 
+    def update_from_form(self, form):
+        self.username = form.username.data.strip()
+        if form.password.data.strip() != "": 
+            self.password = form.password.data.strip()
+        self.tipo = form.type.data
+
 #################################################################################
 # Inicialización de valores por defecto de base de datos
 #################################################################################
 db.event.listen(UsuarioTipo.__table__, 'after_create', _inicializar_tipos_usuario)
 db.event.listen(Usuario.__table__, 'after_create', _inicializar_usuarios)
+
