@@ -19,6 +19,12 @@ class Usuario(db.Model):
         self.password = password
         self.tipo = tipo
 
+    def update_from_form(self, form):
+        self.username = form.username.data.strip()
+        if form.password.data.strip() != "": 
+            self.password = form.password.data.strip()
+        self.tipo = form.type.data
+
 #################################################################################
 # Declaración de valores por defecto de base de datos
 #################################################################################
@@ -38,12 +44,6 @@ def _inicializar_usuarios(*args, **kwargs):
     admin = Usuario('admin', app.config['ADMIN_PASSWORD'], 1)
     db.session.add(admin)
     db.session.commit()
-
-    def update_from_form(self, form):
-        self.username = form.username.data.strip()
-        if form.password.data.strip() != "": 
-            self.password = form.password.data.strip()
-        self.tipo = form.type.data
 
 #################################################################################
 # Inicialización de valores por defecto de base de datos
