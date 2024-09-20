@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+<a href="{{ url_for('user_edit', userid=0) }}">Agregar</a>
 <table class="users">
 <thead>
     <tr>
@@ -16,6 +17,7 @@
     <tr>
         <td>{{ user.username }}</td>
         <td>{{ user.tipo }}</td>
+        <td><a href="{{ url_for('user_edit', userid=user.id) }}">Editar</a></td>
     </tr>
     {%- endfor %}
 </table>
