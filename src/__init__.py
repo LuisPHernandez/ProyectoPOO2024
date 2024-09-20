@@ -55,7 +55,6 @@ def padre():
 
 @app.route('/logout')
 def logout():
-    flash('Has cerrado sesión exitosamente', 'info')
     return redirect(url_for('login'))
 
 @app.route("/admin/list", methods=["GET", "POST"])
