@@ -1,5 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect, flash 
 import flask_sqlalchemy
+from src import forms
+from sqlalchemy.exc import IntegrityError
 
 # Se inicializa la aplicación Flask
 app = Flask(__name__, instance_relative_config=True)
@@ -60,3 +62,42 @@ def logout():
 def user_list():
     data = model.Usuario.query.order_by(model.Usuario.username).all()
     return render_template('user_list.html', data=data)
+
+@app.route("/admin/edit/<int:userid>" , methods=["GET", "POST"])
+def user_edit(userid):
+    form = forms.UsuarioForm()
+    user = model.Usuario.query.filter(model.Usuario.id == userid).first()
+
+    if form.cancel.data:
+        flash('Operación cancelada, no se tomó ninguna acción.')
+        return redirect(url_for('user_list'))
+
+    if form.delete.data:
+        if ((user is None) or (userid == 0)):
+            flash('Imposible borrar usuario inexistente.')
+        else:
+            db.session.delete(user)
+            db.session.commit()
+            db.session.flush()
+        return redirect(url_for('user_list'))
+
+    if form.validate_on_submit():
+        user = model.Usuario(None, None, None) if user is None else user
+        user.update_from_form(form)
+        db.session.add(user)
+        try:
+            db.session.commit()
+        except IntegrityError as ex:
+            db.session.rollback()
+            flash(
+                'Nombre de usuario duplicado, imposible insertar', 'error')
+        except Exception as ex: 
+            db.session.rollback()
+            flash(str(ex), 'error')
+        else:
+            db.session.flush()
+            return redirect(url_for('user_list'))
+
+    if user is not None:
+        form.username.data = user.username
+    return render_template('user_edit.html', form=form)
