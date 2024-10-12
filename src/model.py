@@ -39,6 +39,13 @@ class Materia(db.Model):
     nombre = db.Column(db.String(32), nullable=False)
     maestro = db.Column(db.Integer, db.ForeignKey(Usuario.id))
 
+# Tabla de relación entre materias, alumnos y sus notas
+class MateriaAlumno(db.Model):
+    __tablename__ = 'MateriaAlumno'
+    idMateria = db.column(db.Integer, db.ForeignKey(Materia.id))
+    idAlumno = db.Column(db.Integer, db.ForeignKey(Alumno.id))
+    nota = db.Column(db.Integer)
+    
 #################################################################################
 # Declaración de valores por defecto de base de datos
 #################################################################################
