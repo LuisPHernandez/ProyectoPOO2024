@@ -31,7 +31,14 @@ class Alumno(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nombre = db.Column(db.String(32), nullable=False)
     grado = db.Column(db.Integer, nullable=False)
-    
+
+# Tabla de información de materias
+class Materia(db.Model):
+    __tablename__ = 'Materia'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nombre = db.Column(db.String(32), nullable=False)
+    maestro = db.Column(db.Integer, db.ForeignKey(Usuario.id))
+
 #################################################################################
 # Declaración de valores por defecto de base de datos
 #################################################################################
