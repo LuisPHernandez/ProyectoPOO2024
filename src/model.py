@@ -25,6 +25,13 @@ class Usuario(db.Model):
             self.password = form.password.data.strip()
         self.tipo = form.type.data
 
+# Tabla de información de alumnos
+class Alumno(db.Model):
+    __tablename__ = 'Alumno'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nombre = db.Column(db.String(32), nullable=False)
+    grado = db.Column(db.Integer, nullable=False)
+    
 #################################################################################
 # Declaración de valores por defecto de base de datos
 #################################################################################
@@ -44,6 +51,7 @@ def _inicializar_usuarios(*args, **kwargs):
     admin = Usuario('admin', app.config['ADMIN_PASSWORD'], 1)
     db.session.add(admin)
     db.session.commit()
+
 
 #################################################################################
 # Inicialización de valores por defecto de base de datos
