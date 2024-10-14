@@ -1,0 +1,31 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Editar Usuario</title>
+{% endblock %}
+
+{% block body %}
+<div class="user-edit-container">
+    <h2>Agregar/Editar Materia</h2>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <table class="form-table">
+            <tr>
+                <td>{{ form.nombre.label() }}</td>
+                <td>{{ form.nombre() }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.idmaestro.label() }}</td>
+                <td>{{ form.idmaestro() }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    {{ form.save(class="btn-primary") }}
+                    {{ form.cancel(class="btn-secondary") }}
+                    {{ form.delete(class="btn-danger") }}
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}
