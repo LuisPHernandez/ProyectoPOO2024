@@ -125,7 +125,7 @@ def editar_materia(materiaid):
         return redirect(url_for('lista_materia'))
     
     if form.validate_on_submit():
-        materia = model.Materia(None, None) if materia is None else materia
+        materia = model.Materia() if materia is None else materia
         materia.update_from_form(form)
         db.session.add(materia)
         try:

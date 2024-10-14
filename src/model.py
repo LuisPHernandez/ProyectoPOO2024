@@ -39,6 +39,10 @@ class Materia(db.Model):
     nombre = db.Column(db.String(32), nullable=False)
     maestro = db.Column(db.Integer, db.ForeignKey(Usuario.id))
 
+    def update_from_form(self, form):
+        self.nombre = form.nombre.data.strip()
+        self.maestro = int(form.idmaestro.data)
+
 # Tabla de relación entre materias, alumnos y sus notas
 class MateriaAlumno(db.Model):
     __tablename__ = 'MateriaAlumno'
