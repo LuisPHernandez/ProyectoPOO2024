@@ -1,0 +1,16 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Agregar Alumno</title>
+{% endblock %}
+
+{% block body %}
+<h1>Agregar Alumno</h1>
+<form action="{{ url_for('agregar_alumno') }}" method="POST">
+    <label for="nombre">Nombre del Alumno:</label>
+    <input type="text" name="nombre" required><br>
+    <label for="grado">Grado:</label>
+    <input type="number" name="grado" required><br>
+    <input type="submit" value="Agregar Alumno">
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Alumno Agregado</title>
+{% endblock %}
+
+{% block body %}
+<h1>Alumno agregado con éxito</h1>
+<p><strong>ID Asignado:</strong> {{ id }}</p>
+<p><strong>Nombre:</strong> {{ nombre }}</p>
+<p><strong>Grado:</strong> {{ grado }}</p>
+<a href="{{ url_for('agregar_alumno') }}">Agregar otro alumno</a>
+{% endblock %}

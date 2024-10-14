@@ -1,0 +1,27 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Lista de Alumnos</title>
+{% endblock %}
+
+{% block body %}
+<h1>Lista de Alumnos</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Grado</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for alumno in alumnos %}
+        <tr>
+            <td>{{ alumno.id }}</td>
+            <td>{{ alumno.nombre }}</td>
+            <td>{{ alumno.grado }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -100,3 +100,25 @@ def user_edit(userid):
     if user is not None:
         form.username.data = user.username
     return render_template('user_edit.html', form=form)
+
+
+@app.route('/admin/agregar-alumno', methods=['GET', 'POST'])
+def agregar_alumno():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        grado = request.form['grado']
+        nuevo_alumno = model.Alumno(nombre=nombre, grado=grado)
+        db.session.add(nuevo_alumno)
+        db.session.commit()
+        
+        # Recuperar el ID autogenerado del alumno
+        id_generado = nuevo_alumno.id
+
+        return render_template('alumno_agregado.html', id=id_generado, nombre=nombre, grado=grado)
+    
+    return render_template('agregar_alumno.html')
+
+@app.route('/admin/ver-alumnos')
+def ver_alumnos():
+    alumnos = model.Alumno.query.all()
+    return render_template('lista_alumnos.html', alumnos=alumnos)

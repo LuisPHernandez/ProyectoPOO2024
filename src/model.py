@@ -74,3 +74,13 @@ def _inicializar_usuarios(*args, **kwargs):
 db.event.listen(UsuarioTipo.__table__, 'after_create', _inicializar_tipos_usuario)
 db.event.listen(Usuario.__table__, 'after_create', _inicializar_usuarios)
 
+
+
+
+
+
+    
+
+
+
+

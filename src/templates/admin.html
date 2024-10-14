@@ -9,4 +9,10 @@
 <form action="{{ url_for('user_list') }}" method="get" class="userlist-btn">
     <input type="submit" value="User List">
 </form>
+<form action="{{ url_for('agregar_alumno') }}" method="get">
+    <input type="submit" value="Agregar Alumno">
+</form>
+<form action="{{ url_for('ver_alumnos') }}" method="get">
+    <input type="submit" value="Ver Lista de Alumnos">
+</form>
 {% endblock %}
