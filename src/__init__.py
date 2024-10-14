@@ -100,3 +100,8 @@ def user_edit(userid):
     if user is not None:
         form.username.data = user.username
     return render_template('user_edit.html', form=form)
+
+@app.route("/admin/lista-materia", methods =["GET", "POST"])
+def lista_materia():
+    data = model.Materia.query.order_by(model.Materia.nombre).all()
+    return render_template("lista_materia.html", data = data)
