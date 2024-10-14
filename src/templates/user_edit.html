@@ -1,35 +1,35 @@
 {% extends "base_loggedin.html" %}
 
 {% block head %}
-<title>Usuarios</title>
+<title>Editar Usuario</title>
 {% endblock %}
 
 {% block body %}
-<form method="post">
-
-{{ form.hidden_tag() }}
-<div>
-    <table>
-        <tr>
-            <td>{{ form.username.label() }}</td>
-            <td>{{ form.username() }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label() }}</td>
-            <td>{{ form.password() }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.type.label() }}</td>
-            <td>{{ form.type() }}</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                {{ form.save() }}
-                {{ form.cancel() }}
-                {{ form.delete() }}
-            </td>
-        </tr>
-    </table>
+<div class="user-edit-container">
+    <h2>Editar Usuario</h2>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <table class="form-table">
+            <tr>
+                <td>{{ form.username.label() }}</td>
+                <td>{{ form.username() }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label() }}</td>
+                <td>{{ form.password() }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.type.label() }}</td>
+                <td>{{ form.type() }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    {{ form.save(class="btn-primary") }}
+                    {{ form.cancel(class="btn-secondary") }}
+                    {{ form.delete(class="btn-danger") }}
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
-</form>
-{% endblock %}
+{% endblock %}
