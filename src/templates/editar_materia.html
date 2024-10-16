@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block body %}
-<div class="user-edit-container">
+<div class="materia-edit-contenedor">
     <h2>Agregar/Editar Materia</h2>
     <form method="post">
         {{ form.hidden_tag() }}
-        <table class="form-table">
+        <table class="tabla-form">
             <tr>
                 <td>{{ form.nombre.label() }}</td>
                 <td>{{ form.nombre() }}</td>

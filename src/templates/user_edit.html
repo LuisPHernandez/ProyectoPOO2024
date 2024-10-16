@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block body %}
-<div class="user-edit-container">
+<div class="user-edit-contenedor">
     <h2>Agregar/Editar Usuario</h2>
     <form method="post">
         {{ form.hidden_tag() }}
-        <table class="form-table">
+        <table class="tabla-form">
             <tr>
                 <td>{{ form.username.label() }}</td>
                 <td>{{ form.username() }}</td>
