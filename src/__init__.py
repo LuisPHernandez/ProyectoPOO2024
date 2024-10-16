@@ -37,7 +37,7 @@ def login():
             elif usuario.tipo == 3:
                 return redirect(url_for('padre'))
         else:
-            flash('Usario o password inválido', 'error')
+            flash('Usuario o password inválido', 'error')
 
     return render_template('login.html')
 
