@@ -1,0 +1,36 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Lista de Materia</title>
+{% endblock %}
+
+{% block body %}
+<div class="lista-materia">
+    <h2>Lista de Materias</h2>
+    <a href="{{ url_for('editar_materia', materiaid = 0)}}" class="btn-primary">Agregar Materia</a>
+    <table class="tabla-materias">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>ID</th>
+                <th>Maestro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%-for materia in data-%}
+            <tr>
+                <td>{{materia.nombre}}</td>
+                <td>{{materia.id}}</td>
+                <td>{{materia.maestro}}</td>
+                <td>
+                    <a href="{{ url_for('editar_materia', materiaid = materia.id) }}" class="btn-secondary">Editar</a>
+                </td>
+            </tr>
+            {%- endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock %}

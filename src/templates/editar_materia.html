@@ -6,21 +6,17 @@
 
 {% block body %}
 <div class="user-edit-container">
-    <h2>Agregar/Editar Usuario</h2>
+    <h2>Agregar/Editar Materia</h2>
     <form method="post">
         {{ form.hidden_tag() }}
         <table class="form-table">
             <tr>
-                <td>{{ form.username.label() }}</td>
-                <td>{{ form.username() }}</td>
+                <td>{{ form.nombre.label() }}</td>
+                <td>{{ form.nombre() }}</td>
             </tr>
             <tr>
-                <td>{{ form.password.label() }}</td>
-                <td>{{ form.password() }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.type.label() }}</td>
-                <td>{{ form.type() }}</td>
+                <td>{{ form.idmaestro.label() }}</td>
+                <td>{{ form.idmaestro() }}</td>
             </tr>
             <tr>
                 <td colspan="2">

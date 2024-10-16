@@ -101,7 +101,6 @@ def user_edit(userid):
         form.username.data = user.username
     return render_template('user_edit.html', form=form)
 
-
 @app.route('/admin/agregar-alumno', methods=['GET', 'POST'])
 def agregar_alumno():
     if request.method == 'POST':
@@ -122,3 +121,48 @@ def agregar_alumno():
 def ver_alumnos():
     alumnos = model.Alumno.query.all()
     return render_template('lista_alumnos.html', alumnos=alumnos)
+
+@app.route("/admin/lista-materia", methods =["GET", "POST"])
+def lista_materia():
+    data = model.Materia.query.order_by(model.Materia.nombre).all()
+    return render_template("lista_materia.html", data = data)
+
+@app.route("/admin/editar-materia/<int:materiaid>", methods =["GET", "POST"])
+def editar_materia(materiaid):
+    form = forms.MateriaForm()
+    materia = model.Materia.query.filter(model.Materia.id == materiaid).first()
+
+    if form.cancel.data:
+        flash('Operación cancelada, no se tomó ninguna acción.')
+        return redirect(url_for('lista_materia'))
+    
+    if form.delete.data:
+        if ((materia is None) or (materiaid == 0)):
+            flash('Imposible borrar materia inexistente.')
+        else:
+            db.session.delete(materia)
+            db.session.commit()
+            db.session.flush()
+        return redirect(url_for('lista_materia'))
+    
+    if form.validate_on_submit():
+        materia = model.Materia(None, None) if materia is None else materia
+        materia.update_from_form(form)
+        db.session.add(materia)
+        try:
+            db.session.commit()
+        except IntegrityError as ex:
+            db.session.rollback()
+            flash('Nombre de materia duplicado, imposible insertar', 'error')
+        except Exception as ex: 
+            db.session.rollback()
+            flash(str(ex), 'error')
+        else:
+            db.session.flush()
+            return redirect(url_for('lista_materia'))
+        
+    if materia is not None:
+        form.nombre.data = materia.nombre
+    return render_template('editar_materia.html', form=form)
+
+

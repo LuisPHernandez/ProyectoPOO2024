@@ -16,3 +16,17 @@ class UsuarioForm(FlaskForm):
     save = SubmitField("Guardar")
     cancel = SubmitField("Cancelar")
     delete = SubmitField("Borrar")
+
+class MateriaForm(FlaskForm):
+    mid = IntegerField("ID", default=None)
+    nombre = StringField(
+        "Nombre de la Materia:",
+        validators=[InputRequired()],
+    )
+    idmaestro = IntegerField(
+        "ID del Maestro:",
+        validators=[InputRequired()],
+    )
+    save = SubmitField("Guardar")
+    cancel = SubmitField("Cancelar")
+    delete = SubmitField("Borrar") 

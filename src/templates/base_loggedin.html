@@ -8,10 +8,13 @@
     {% block head %}{% endblock %}
   </head>
   <body>
-    <form action="{{ url_for('logout') }}" method="get" class="logout-btn">
+    <header>
+      <form action="{{ url_for('logout') }}" method="get" class="logout-btn">
         <input type="submit" value="Logout">
-    </form>
-    {% block body %}
-    {% endblock %}
+      </form>
+    </header>
+    <main>
+      {% block body %}{% endblock %}
+    </main>
   </body>
 </html>
