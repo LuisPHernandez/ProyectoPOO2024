@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block body %}
-<div class="admin-container">
+<div class="admin-contenedor">
     <h1>Administrador de sistema</h1>
     <form action="{{ url_for('user_list') }}" method="get" class="userlist-btn">
-        <input type="submit" value="User List" class="btn-primary">
+        <input type="submit" value="User List" class="btn-primario">
     </form>
     </form>
-    <form action="{{ url_for('lista_materia') }}" method="get" class="userlist-btn">
-        <input type="submit" value="Agregar Materia">
+    <form action="{{ url_for('lista_materia') }}" method="get" class="lista-materia-btn">
+        <input type="submit" value="Agregar Materia" class="btn-primario">
     </form>
 </div>
 {% endblock %}
