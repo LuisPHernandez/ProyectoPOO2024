@@ -5,12 +5,15 @@
 {% endblock %}
 
 {% block body %}
-<h2>Lista de Materias</h2>
-<ul>
-    {% for materia in materias %}
-        <li>
-            <a href="{{ url_for('asignar_alumno', materia_id=materia.id) }}">{{ materia.nombre }}</a>
-        </li>
-    {% endfor %}
-</ul>
+<div class="lista-materia-contenedor">
+    <h2>Lista de Materias</h2>
+    <a href="{{ url_for('editar_materia', materiaid=0) }}" class="btn-primario">Agregar Materia</a>
+    <ul class="lista-materias">
+        {% for materia in materias %}
+            <li>
+                <a href="{{ url_for('asignar_alumno', materia_id=materia.id) }}">{{ materia.nombre }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

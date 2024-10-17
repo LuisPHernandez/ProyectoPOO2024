@@ -1,17 +1,54 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Asignar Alumnos a {{ materia.nombre }}</title>
+<style>
+    /* Estilos adicionales para el cuadro de selección de alumnos */
+    .select-alumnos {
+        width: 300px; /* Aumentar el ancho */
+        height: 150px; /* Aumentar la altura */
+        border: 2px solid #007BFF; /* Borde de color */
+        border-radius: 5px; /* Bordes redondeados */
+        padding: 10px; /* Espaciado interno */
+        background-color: #f8f9fa; /* Color de fondo */
+        color: #333; /* Color del texto */
+        font-size: 16px; /* Tamaño de la fuente */
+        transition: border-color 0.3s; /* Transición suave para el borde */
+    }
+    
+    .select-alumnos:hover {
+        border-color: #0056b3; /* Cambia el color del borde al pasar el mouse */
+    }
+
+    /* Estilo para la etiqueta de alumnos */
+    .alumnos-label {
+        font-size: 18px; /* Tamaño de la fuente */
+        font-weight: bold; /* Negrita */
+        margin-bottom: 5px; /* Espaciado inferior */
+        display: block; /* Mostrar como bloque para ocupar todo el ancho */
+        color: #007BFF; /* Color del texto */
+        text-align: center; /* Centrar el texto */
+    }
+
+    .asignar-alumnos-submit {
+        text-align: center; /* Centrar el botón */
+        margin-top: 10px; /* Espaciado superior */
+    }
+</style>
+{% endblock %}
+
 {% block body %}
-<h2>Asignar Alumnos a {{ materia.nombre }}</h2>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    <table>
-        <tr>
-            <td>{{ form.alumnos.label }}</td>
-            <td>{{ form.alumnos }}</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                {{ form.submit(class="btn-primary") }}  <!-- Cambiar aquí -->
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="asignar-alumnos-contenedor" style="text-align: center;">
+    <h2>Asignar Alumnos a {{ materia.nombre }}</h2>
+    <form method="POST" class="asignar-alumnos-form" style="display: inline-block; text-align: left;">
+        {{ form.hidden_tag() }}
+        <div class="asignar-alumnos-campo">
+            <label for="alumnos" class="alumnos-label">{{ form.alumnos.label }}</label> <!-- Colocar el texto "Alumnos" arriba -->
+            {{ form.alumnos(class="select-alumnos") }} <!-- Agregar clase para estilo -->
+        </div>
+        <div class="asignar-alumnos-submit">
+            {{ form.submit(class="btn-primario") }} <!-- Cambiar aquí -->
+        </div>
+    </form>
+</div>
 {% endblock %}
