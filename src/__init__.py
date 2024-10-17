@@ -165,8 +165,8 @@ def editar_materia(materiaid):
         form.nombre.data = materia.nombre
     return render_template('editar_materia.html', form=form)
 
-@app.route('/admin/modificar-alumno/<int:id>', methods=['GET', 'POST'])
-def modificar_alumno(id):
+@app.route('/admin/editar-alumno/<int:id>', methods=['GET', 'POST'])
+def editar_alumno(id):
     alumno = model.Alumno.query.get_or_404(id)
     
     if request.method == 'POST':
@@ -179,7 +179,7 @@ def modificar_alumno(id):
         db.session.commit()
         return redirect(url_for('ver_alumnos'))
     
-    return render_template('modificar_alumno.html', alumno=alumno)
+    return render_template('editar_alumno.html', alumno=alumno)
 
 @app.route('/eliminar_alumno/<int:id>', methods=['POST'])
 def eliminar_alumno(id):

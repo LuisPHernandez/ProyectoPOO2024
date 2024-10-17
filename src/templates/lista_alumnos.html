@@ -2,23 +2,12 @@
 
 {% block head %}
 <title>Lista de Alumnos</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
 {% endblock %}
 
 {% block body %}
-<div class="lista-user-contenedor">
-    <h1>Lista de Alumnos</h1>
-
-    <table class="tabla-users">
-        <thead>
-            <tr>
-                <th>
-                    <a href="{{ url_for('admin') }}" class="btn-primario">Volver al Administrador</a>
-                </th>
-            </tr>
-        </thead>
-    </table>
-
+<div class="lista-alumnos-contenedor">
+    <h2>Lista de Alumnos</h1>
+    <a href="{{ url_for('admin')}}" class="btn-primario">Regresar</a>
     <table class="tabla-users">
         <thead>
             <tr>
@@ -35,7 +24,7 @@
                 <td>{{ alumno.nombre }}</td>
                 <td>{{ alumno.grado }}</td>
                 <td>
-                    <a href="{{ url_for('modificar_alumno', id=alumno.id) }}" class="btn-primario">Modificar</a>
+                    <a href="{{ url_for('editar_alumno', id=alumno.id) }}" class="btn-primario">Editar</a>
                     <form action="{{ url_for('eliminar_alumno', id=alumno.id) }}" method="POST" style="display:inline;">
                         <button type="submit" class="btn-secundario">Eliminar</button>
                     </form>

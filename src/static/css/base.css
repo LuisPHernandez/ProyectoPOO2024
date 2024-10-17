@@ -10,7 +10,8 @@ h1, h2 {
     text-align: center;
 }
 
-.home-contenedor, .login-contenedor, .user-edit-contenedor, .lista-user-contenedor, .admin-contenedor, .materia-edit-contenedor, .lista-materia-contenedor {
+.home-contenedor, .login-contenedor, .user-edit-contenedor, .lista-user-contenedor, .admin-contenedor, .materia-edit-contenedor, 
+.lista-materia-contenedor .lista-alumnos-contenedor {
     margin: 50px auto;
     max-width: 600px;
     padding: 20px;
@@ -63,10 +64,10 @@ h1, h2 {
 }
 
 /* Tablas */
-.tabla-users, .tabla-materias {
+.tabla-users, .tabla-materias, .tabla-alumnos {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 20px 20px;
 }
 
 .tabla-users th, .tabla-users td, .tabla-materias th, .tabla-materias td {

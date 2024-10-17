@@ -7,6 +7,7 @@
 {% block body %}
 <div class="lista-user-contenedor">
     <h2>Usuarios Registrados</h2>
+    <a href="{{ url_for('admin')}}" class="btn-primario">Regresar</a>
     <a href="{{ url_for('user_edit', userid=0) }}" class="btn-primario">Agregar Usuario</a>
     <table class="tabla-users">
         <thead>
