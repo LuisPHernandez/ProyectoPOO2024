@@ -181,4 +181,9 @@ def modificar_alumno(id):
     
     return render_template('modificar_alumno.html', alumno=alumno)
 
-
+@app.route('/admin/eliminar-alumno/<int:id>', methods=['POST'])
+def eliminar_alumno(id):
+    alumno = model.Alumno.query.get_or_404(id)
+    db.session.delete(alumno)
+    db.session.commit()
+    return redirect(url_for('ver_alumnos'))

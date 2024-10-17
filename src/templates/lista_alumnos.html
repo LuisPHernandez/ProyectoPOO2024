@@ -24,6 +24,10 @@
             <td>{{ alumno.grado }}</td>
             <td>
                 <a href="{{ url_for('modificar_alumno', id=alumno.id) }}" class="btn btn-warning">Modificar</a>
+
+                <form action="{{ url_for('eliminar_alumno', id=alumno.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
             </td>
         </tr>
         {% endfor %}
