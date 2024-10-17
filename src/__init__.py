@@ -165,4 +165,20 @@ def editar_materia(materiaid):
         form.nombre.data = materia.nombre
     return render_template('editar_materia.html', form=form)
 
+@app.route('/admin/modificar-alumno/<int:id>', methods=['GET', 'POST'])
+def modificar_alumno(id):
+    alumno = model.Alumno.query.get_or_404(id)
+    
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        grado = request.form['grado']
+        
+        alumno.nombre = nombre
+        alumno.grado = grado
+        
+        db.session.commit()
+        return redirect(url_for('ver_alumnos'))
+    
+    return render_template('modificar_alumno.html', alumno=alumno)
+
 

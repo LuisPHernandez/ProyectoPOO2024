@@ -6,22 +6,30 @@
 
 {% block body %}
 <h1>Lista de Alumnos</h1>
-<table>
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Grado</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-    {% for alumno in alumnos %}
+        {% for alumno in alumnos %}
         <tr>
             <td>{{ alumno.id }}</td>
             <td>{{ alumno.nombre }}</td>
             <td>{{ alumno.grado }}</td>
+            <td>
+                <a href="{{ url_for('modificar_alumno', id=alumno.id) }}" class="btn btn-warning">Modificar</a>
+            </td>
         </tr>
-    {% endfor %}
+        {% endfor %}
     </tbody>
 </table>
+
+<a href="{{ url_for('agregar_alumno') }}" class="btn btn-primary">Agregar Nuevo Alumno</a>
 {% endblock %}
+
