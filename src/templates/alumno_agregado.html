@@ -2,12 +2,19 @@
 
 {% block head %}
 <title>Alumno Agregado</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
 {% endblock %}
 
 {% block body %}
-<h1>Alumno agregado con éxito</h1>
-<p><strong>ID Asignado:</strong> {{ id }}</p>
-<p><strong>Nombre:</strong> {{ nombre }}</p>
-<p><strong>Grado:</strong> {{ grado }}</p>
-<a href="{{ url_for('agregar_alumno') }}">Agregar otro alumno</a>
+<div class="lista-user-contenedor">
+    <h1>Alumno agregado con éxito</h1>
+    <p><strong>ID Asignado:</strong> {{ id }}</p>
+    <p><strong>Nombre:</strong> {{ nombre }}</p>
+    <p><strong>Grado:</strong> {{ grado }}</p>
+    <br><br>
+
+
+    <a href="{{ url_for('agregar_alumno') }}" class="btn-primario">Agregar otro alumno</a>
+    <a href="{{ url_for('admin') }}" class="btn-secundario">Volver al Administrador</a>
+</div>
 {% endblock %}
