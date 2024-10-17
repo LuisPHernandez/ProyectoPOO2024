@@ -165,4 +165,35 @@ def editar_materia(materiaid):
         form.nombre.data = materia.nombre
     return render_template('editar_materia.html', form=form)
 
+@app.route('/materias/listar', methods=['GET'])
+def listar_materias():
+    materias = model.Materia.query.all()
+    return render_template('listar_materias.html', materias=materias)
+
+@app.route('/materias/<int:materia_id>/asignar', methods=['GET', 'POST'])
+def asignar_alumno(materia_id):
+    materia = model.Materia.query.get(materia_id)
+    form = forms.AsignarAlumnoForm()  # Cambiar aquí para usar el formulario desde forms
+
+    # Populamos las opciones del formulario
+    form.materia_id.choices = [(materia.id, materia.nombre) for materia in model.Materia.query.all()]
+    form.alumnos.choices = [(alumno.id, alumno.nombre) for alumno in model.Alumno.query.all()]
+
+    if form.validate_on_submit():
+        alumnos_seleccionados = form.alumnos.data
+        for alumno_id in alumnos_seleccionados:
+            asignacion = model.MateriaAlumno(materia_id=materia_id, alumno_id=alumno_id)
+            db.session.add(asignacion)
+        db.session.commit()
+        return redirect(url_for('listar_materias'))
+    
+    return render_template('seleccionar_alumnos.html', form=form, materia=materia)
+
+
+
+
+
+
+
+
 
