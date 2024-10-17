@@ -181,9 +181,16 @@ def modificar_alumno(id):
     
     return render_template('modificar_alumno.html', alumno=alumno)
 
-@app.route('/admin/eliminar-alumno/<int:id>', methods=['POST'])
+@app.route('/eliminar_alumno/<int:id>', methods=['POST'])
 def eliminar_alumno(id):
     alumno = model.Alumno.query.get_or_404(id)
     db.session.delete(alumno)
     db.session.commit()
-    return redirect(url_for('ver_alumnos'))
+    return redirect(url_for('lista_alumnos'))
+
+@app.route('/lista_alumnos')
+def lista_alumnos():
+    alumnos = model.Alumno.query.all()  
+    return render_template('lista_alumnos.html', alumnos=alumnos)
+
+
