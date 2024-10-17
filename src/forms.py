@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, StringField, SubmitField, PasswordField, RadioField
+from wtforms import IntegerField, StringField, SubmitField, PasswordField, RadioField, SelectField, SelectMultipleField
 from wtforms.validators import InputRequired
+
 
 class UsuarioForm(FlaskForm):
     uid = IntegerField("uuid", default=None)
@@ -30,3 +31,8 @@ class MateriaForm(FlaskForm):
     save = SubmitField("Guardar")
     cancel = SubmitField("Cancelar")
     delete = SubmitField("Borrar") 
+     
+class AsignarAlumnoForm(FlaskForm):
+    materia_id = SelectMultipleField("Materia", coerce=int, validators=[InputRequired()])
+    alumnos = SelectMultipleField("Alumnos", coerce=int, validators=[InputRequired()])
+    submit = SubmitField("Asignar")
