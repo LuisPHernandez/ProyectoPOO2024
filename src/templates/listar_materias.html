@@ -1,0 +1,16 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Lista de Materias</title>
+{% endblock %}
+
+{% block body %}
+<h2>Lista de Materias</h2>
+<ul>
+    {% for materia in materias %}
+        <li>
+            <a href="{{ url_for('asignar_alumno', materia_id=materia.id) }}">{{ materia.nombre }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,5 +1,6 @@
 from src import db, app
 
+
 # Catálogo de tipos de usuario
 class UsuarioTipo(db.Model):
     __tablename__ = 'UsuarioTipo'
@@ -50,6 +51,7 @@ class MateriaAlumno(db.Model):
     idMateria = db.column(db.Integer, db.ForeignKey(Materia.id))
     idAlumno = db.Column(db.Integer, db.ForeignKey(Alumno.id))
     nota = db.Column(db.Integer)
+    
     
 #################################################################################
 # Declaración de valores por defecto de base de datos

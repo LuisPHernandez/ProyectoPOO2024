@@ -1,0 +1,17 @@
+{% block body %}
+<h2>Asignar Alumnos a {{ materia.nombre }}</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <table>
+        <tr>
+            <td>{{ form.alumnos.label }}</td>
+            <td>{{ form.alumnos }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                {{ form.submit(class="btn-primary") }}  <!-- Cambiar aquí -->
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
