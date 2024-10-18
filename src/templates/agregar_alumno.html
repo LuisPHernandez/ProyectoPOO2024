@@ -2,15 +2,29 @@
 
 {% block head %}
 <title>Agregar Alumno</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
 {% endblock %}
 
 {% block body %}
-<h1>Agregar Alumno</h1>
-<form action="{{ url_for('agregar_alumno') }}" method="POST">
-    <label for="nombre">Nombre del Alumno:</label>
-    <input type="text" name="nombre" required><br>
-    <label for="grado">Grado:</label>
-    <input type="number" name="grado" required><br>
-    <input type="submit" value="Agregar Alumno">
-</form>
+<div class="lista-user-contenedor">
+    <h1>Agregar Alumno</h1>
+    <form action="{{ url_for('agregar_alumno') }}" method="POST" class="tabla-form">
+        <table>
+            <tr>
+                <td><label for="nombre">Nombre del Alumno:</label></td>
+                <td><input type="text" name="nombre" required></td>
+            </tr>
+            <tr>
+                <td><label for="grado">Grado:</label></td>
+                <td><input type="number" name="grado" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Agregar Alumno" class="btn-primario">
+                    <a href="{{ url_for('admin') }}" class="btn-secundario">Volver al Administrador</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 {% endblock %}

@@ -5,23 +5,33 @@
 {% endblock %}
 
 {% block body %}
-<h1>Lista de Alumnos</h1>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Grado</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for alumno in alumnos %}
-        <tr>
-            <td>{{ alumno.id }}</td>
-            <td>{{ alumno.nombre }}</td>
-            <td>{{ alumno.grado }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<div class="lista-alumnos-contenedor">
+    <h2>Lista de Alumnos</h1>
+    <a href="{{ url_for('admin')}}" class="btn-primario">Regresar</a>
+    <table class="tabla-users">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Grado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno.id }}</td>
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.grado }}</td>
+                <td>
+                    <a href="{{ url_for('editar_alumno', id=alumno.id) }}" class="btn-primario">Editar</a>
+                    <form action="{{ url_for('eliminar_alumno', id=alumno.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn-secundario">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

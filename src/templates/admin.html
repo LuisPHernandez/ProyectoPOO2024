@@ -6,23 +6,19 @@
 
 {% block body %}
 <h1>Administrador de sistema</h1>
-<form action="{{ url_for('user_list') }}" method="get" class="userlist-btn">
-    <input type="submit" value="User List">
-</form>
 <div class="admin-contenedor">
-    <h1>Administrador de sistema</h1>
     <form action="{{ url_for('user_list') }}" method="get" class="userlist-btn">
-        <input type="submit" value="User List" class="btn-primario">
-    </form>
-    <form action="{{ url_for('agregar_alumno') }}" method="get">
-        <input type="submit" value="Agregar Alumno">
-    </form>
-    <form action="{{ url_for('ver_alumnos') }}" method="get">
-        <input type="submit" value="Ver Lista de Alumnos">
-    </form>
+        <input type="submit" value="Lista de Usuarios" class="btn-primario">
     </form>
     <form action="{{ url_for('lista_materia') }}" method="get" class="lista-materia-btn">
-        <input type="submit" value="Agregar Materia" class="btn-primario">
+        <input type="submit" value="Lista de Materias" class="btn-primario">
+    </form>
+    <form action="{{ url_for('ver_alumnos') }}" method="get">
+        <input type="submit" value="Lista de Alumnos" class="btn-primario">
+    </form>
+    <form action="{{ url_for('agregar_alumno') }}" method="get">
+        <input type="submit" value="Agregar Alumno" class="btn-primario">
+    </form>
     </form>
     <form action="{{ url_for('listar_materias') }}" method="get" class="asignar-alumnos-btn">
         <input type="submit" value="Asignar Alumnos a Materia" class="btn-primario">
