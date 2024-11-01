@@ -217,5 +217,12 @@ def asignar_alumno(materia_id):
     
     return render_template('seleccionar_alumnos.html', form=form, materia=materia)
 
+@app.route('/admin/ver-padres')
+def ver_padres():
+    padres = model.Usuario.query.filter_by(tipo=3).all()  # tipo 3 corresponde a los usuarios de tipo "padre"
+    return render_template('ver_padres.html', padres=padres)
+
+
+
 
 
