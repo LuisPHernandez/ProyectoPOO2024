@@ -1,0 +1,30 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Asignar Alumno a {{ padre.username }}</title>
+{% endblock %}
+
+{% block body %}
+<div class="asignar-alumno-contenedor">
+    <h2>Asignar Alumno a {{ padre.username }}</h2>
+    <a href="{{ url_for('ver_padres') }}" class="btn-primario">Regresar</a>
+    <table class="tabla-users">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Grado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno.id }}</td>
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.grado }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

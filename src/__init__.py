@@ -222,6 +222,15 @@ def ver_padres():
     padres = model.Usuario.query.filter_by(tipo=3).all()  # tipo 3 corresponde a los usuarios de tipo "padre"
     return render_template('ver_padres.html', padres=padres)
 
+@app.route('/admin/asignar-alumno-padre/<int:padre_id>')
+def asignar_alumno_padre(padre_id):
+    # Filtrar a los alumnos que no están asignados a ningún padre
+    alumnos_no_asignados = model.Alumno.query.filter(~model.Alumno.id.in_(
+        db.session.query(model.MateriaAlumno.idAlumno).distinct()
+    )).all()
+    padre = model.Usuario.query.get_or_404(padre_id)
+    return render_template('asignar_alumno_padre.html', padre=padre, alumnos=alumnos_no_asignados)
+
 
 
 
