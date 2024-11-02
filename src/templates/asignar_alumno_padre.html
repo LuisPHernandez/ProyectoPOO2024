@@ -14,6 +14,7 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Grado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,11 @@
                 <td>{{ alumno.id }}</td>
                 <td>{{ alumno.nombre }}</td>
                 <td>{{ alumno.grado }}</td>
+                <td>
+                    <form action="{{ url_for('guardar_asignacion_alumno', padre_id=padre.id, alumno_id=alumno.id) }}" method="post">
+                        <button type="submit" class="btn-primario">Asignar</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

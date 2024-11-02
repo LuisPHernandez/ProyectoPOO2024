@@ -223,13 +223,29 @@ def ver_padres():
     return render_template('ver_padres.html', padres=padres)
 
 @app.route('/admin/asignar-alumno-padre/<int:padre_id>')
-def asignar_alumno_padre(padre_id):
-    # Filtrar a los alumnos que no están asignados a ningún padre
+def asignar_alumno_padre_vista(padre_id):
+    # Obtener el padre seleccionado
+    padre = model.Usuario.query.get_or_404(padre_id)
+    
+    # Obtener los alumnos no asignados
     alumnos_no_asignados = model.Alumno.query.filter(~model.Alumno.id.in_(
         db.session.query(model.MateriaAlumno.idAlumno).distinct()
     )).all()
-    padre = model.Usuario.query.get_or_404(padre_id)
+
     return render_template('asignar_alumno_padre.html', padre=padre, alumnos=alumnos_no_asignados)
+
+@app.route('/admin/guardar-asignacion-alumno/<int:padre_id>/<int:alumno_id>', methods=['POST'])
+def guardar_asignacion_alumno(padre_id, alumno_id):
+    padre = model.Usuario.query.get_or_404(padre_id)
+    alumno = model.Alumno.query.get_or_404(alumno_id)
+    
+    # Crear la relación entre el padre y el alumno
+    relacion = model.MateriaAlumno(idMateria=None, idAlumno=alumno_id)  # Ajusta la relación según tus modelos
+    db.session.add(relacion)
+    db.session.commit()
+    
+    flash("Alumno asignado correctamente al padre.", "success")
+    return redirect(url_for('asignar_alumno_padre_vista', padre_id=padre_id))
 
 
 
