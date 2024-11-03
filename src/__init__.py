@@ -201,9 +201,13 @@ def listar_materias():
 @app.route('/materias/<int:materia_id>/asignar', methods=['GET', 'POST'])
 def asignar_alumno(materia_id):
     materia = model.Materia.query.get(materia_id)
-
     form = forms.AsignarAlumnoForm()
-    form.alumnos.choices = [(alumno.id, alumno.nombre) for alumno in model.Alumno.query.all()]
+    alumnos_asignados_ids = [
+        relacion.idAlumno for relacion in model.MateriaAlumno.query.filter_by(idMateria=materia_id).all()
+    ]
+    alumnos_disponibles = model.Alumno.query.filter(~model.Alumno.id.in_(alumnos_asignados_ids)).all()
+
+    form.alumnos.choices = [(alumno.id, alumno.nombre) for alumno in alumnos_disponibles]
 
     if form.validate_on_submit():
         alumnos_seleccionados = form.alumnos.data
@@ -211,6 +215,7 @@ def asignar_alumno(materia_id):
             asignacion = model.MateriaAlumno(idMateria=materia_id, idAlumno=alumno_id)
             db.session.add(asignacion)
         db.session.commit()
+        flash('Alumnos asignados correctamente.', 'success')
         return redirect(url_for('listar_materias'))
     return render_template('seleccionar_alumnos.html', form=form, materia=materia)
 
