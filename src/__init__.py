@@ -216,11 +216,9 @@ def asignar_alumno(materia_id):
             asignacion = model.MateriaAlumno(idMateria=materia_id, idAlumno=alumno_id)
             db.session.add(asignacion)
         db.session.commit()
-        flash('Alumnos asignados correctamente.', 'success')
         return redirect(url_for('listar_materias'))
     return render_template('seleccionar_alumnos.html', form=form, materia=materia)
 
-<<<<<<< HEAD
 @app.route('/notas_y_alumnos')
 def notas_y_alumnos():
     relaciones = db.session.query(model.MateriaAlumno, model.Alumno, model.Materia) \
@@ -229,7 +227,6 @@ def notas_y_alumnos():
         .all()
     
     return render_template("notas_y_alumnos.html", relaciones=relaciones)
-=======
 @app.route('/admin/ver-padres')
 def ver_padres():
     padres = model.Usuario.query.filter_by(tipo=3).all()  # tipo 3 corresponde a los usuarios de tipo "padre"
@@ -259,9 +256,3 @@ def guardar_asignacion_alumno(padre_id, alumno_id):
     
     flash("Alumno asignado correctamente al padre.", "success")
     return redirect(url_for('asignar_alumno_padre_vista', padre_id=padre_id))
-
-
-
-
->>>>>>> 29662215742adeb95c8a42e187fc7a5a3a500773
-

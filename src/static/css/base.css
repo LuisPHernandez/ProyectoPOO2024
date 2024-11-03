@@ -28,14 +28,8 @@ h2 {
 }
 
 /* Botones */
-<<<<<<< HEAD
-.btn-primario,
-.btn-secundario {
-    margin: 10px;
-=======
 .btn-primario, .btn-secundario {
     margin: 15px;
->>>>>>> 0aefb4c8065c13584c9aad50a1f3fc78e4876206
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -129,8 +123,6 @@ h2 {
 .flash.error {
     background-color: #e74c3c;
     color: white;
-<<<<<<< HEAD
-=======
 }
 
 .select-alumnos {
@@ -161,5 +153,4 @@ h2 {
 .asignar-alumnos-submit {
     text-align: center;
     margin-top: 10px;
->>>>>>> 0aefb4c8065c13584c9aad50a1f3fc78e4876206
 }
