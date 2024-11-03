@@ -201,20 +201,17 @@ def listar_materias():
 @app.route('/materias/<int:materia_id>/asignar', methods=['GET', 'POST'])
 def asignar_alumno(materia_id):
     materia = model.Materia.query.get(materia_id)
-    form = forms.AsignarAlumnoForm()
 
-    # Populamos las opciones del formulario
-    form.materia_id.choices = [(materia.id, materia.nombre) for materia in model.Materia.query.all()]
+    form = forms.AsignarAlumnoForm()
     form.alumnos.choices = [(alumno.id, alumno.nombre) for alumno in model.Alumno.query.all()]
 
     if form.validate_on_submit():
         alumnos_seleccionados = form.alumnos.data
         for alumno_id in alumnos_seleccionados:
-            asignacion = model.MateriaAlumno(materia_id=materia_id, alumno_id=alumno_id)
+            asignacion = model.MateriaAlumno(idMateria=materia_id, idAlumno=alumno_id)
             db.session.add(asignacion)
         db.session.commit()
         return redirect(url_for('listar_materias'))
-    
     return render_template('seleccionar_alumnos.html', form=form, materia=materia)
 
 @app.route('/admin/ver-padres')

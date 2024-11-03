@@ -33,6 +33,6 @@ class MateriaForm(FlaskForm):
     delete = SubmitField("Borrar") 
      
 class AsignarAlumnoForm(FlaskForm):
-    materia_id = SelectField("Materia", coerce=int, validators=[InputRequired()])
+    # materia_id = SelectField("Materia", coerce=int, validators=[InputRequired()])
     alumnos = SelectMultipleField("Alumnos", coerce=int, validators=[InputRequired()])
     submit = SubmitField("Asignar")
