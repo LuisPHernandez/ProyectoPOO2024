@@ -3,6 +3,7 @@ import flask_sqlalchemy
 from src import forms
 from sqlalchemy.exc import IntegrityError
 
+
 # Se inicializa la aplicación Flask
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_object('config')
@@ -217,5 +218,12 @@ def asignar_alumno(materia_id):
     
     return render_template('seleccionar_alumnos.html', form=form, materia=materia)
 
-
+@app.route('/notas_y_alumnos')
+def notas_y_alumnos():
+    relaciones = db.session.query(model.MateriaAlumno, model.Alumno, model.Materia) \
+        .join(model.Alumno, model.MateriaAlumno.idAlumno == model.Alumno.id) \
+        .join(model.Materia, model.MateriaAlumno.idMateria == model.Materia.id) \
+        .all()
+    
+    return render_template("notas_y_alumnos.html", relaciones=relaciones)
 
