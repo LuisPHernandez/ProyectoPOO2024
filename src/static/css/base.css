@@ -28,9 +28,14 @@ h2 {
 }
 
 /* Botones */
+<<<<<<< HEAD
 .btn-primario,
 .btn-secundario {
     margin: 10px;
+=======
+.btn-primario, .btn-secundario {
+    margin: 15px;
+>>>>>>> 0aefb4c8065c13584c9aad50a1f3fc78e4876206
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -124,4 +129,37 @@ h2 {
 .flash.error {
     background-color: #e74c3c;
     color: white;
+<<<<<<< HEAD
+=======
+}
+
+.select-alumnos {
+    width: 300px;
+    height: 150px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+    
+.select-alumnos:hover {
+    border-color: #0056b3;
+}
+
+.alumnos-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #007BFF;
+    text-align: center;
+}
+
+.asignar-alumnos-submit {
+    text-align: center;
+    margin-top: 10px;
+>>>>>>> 0aefb4c8065c13584c9aad50a1f3fc78e4876206
 }
