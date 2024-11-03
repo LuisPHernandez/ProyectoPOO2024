@@ -1,0 +1,14 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Maestro</title>
+{% endblock %}
+
+{% block body %}
+<h1> Menu principal para Maestros</h1>
+<div class=admin-contenedor>
+    <form action="{{url_for('notas_y_alumnos')}}" method="get" class="notas_y_alumnos-btn">
+        <input type="submit" value="Notas y Alumnos" class="btn-primario">
+    </form>
+</div>
+{% endblock %}

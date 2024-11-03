@@ -1,0 +1,25 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title> Lista de Alumnos y Notas </title>
+{% endblock %}
+
+{% block body %}
+<div class="lista-notas_y_alumnos">
+    <h2>Lista de Alumnos y Notas</h2>
+    <table class="tabla-notas_y_alumnos">
+        <tr>
+            <th>Materia</th>
+            <th>Alumno</th>
+            <th>Nota</th>
+        </tr>
+        {% for relacion, alumno, materia in relaciones %}
+        <tr>
+            <td>{{ materia.nombre }}</td>
+            <td>{{ alumno.nombre }}</td>
+            <td>{{ relacion.nota }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
