@@ -257,6 +257,3 @@ def guardar_asignacion_alumno(padre_id, alumno_id):
 
 
 
-
->>>>>>> 29662215742adeb95c8a42e187fc7a5a3a500773
-
