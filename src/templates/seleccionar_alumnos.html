@@ -6,12 +6,12 @@
 
 {% block body %}
 <div class="asignar-alumnos-contenedor" style="text-align: center;">
-    <a href="{{ url_for('admin')}}" class="btn-primario">Regresar</a>
+    <a href="{{ url_for('listar_materias')}}" class="btn-primario">Regresar</a>
     <h2>Asignar Alumnos a {{ materia.nombre }}</h2>
-    <form method="POST" class="asignar-alumnos-form" style="display: inline-block; text-align: left;">
+    <form method="POST" class="asignar-alumnos-form">
         {{ form.hidden_tag() }}
         <div class="asignar-alumnos-campo">
-            <label for="alumnos" class="alumnos-label">{{ form.alumnos.label }}</label>
+            <label for="alumnos" class="alumnos-label">Alumnos Disponibles</label>
             {{ form.alumnos(class="select-alumnos") }} 
         </div>
         <div class="asignar-alumnos-submit">
