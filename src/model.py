@@ -48,7 +48,7 @@ class Materia(db.Model):
 class MateriaAlumno(db.Model):
     __tablename__ = 'MateriaAlumno'
     relacion = db.Column(db.Integer, primary_key=True)
-    idMateria = db.column(db.Integer, db.ForeignKey(Materia.id))
+    idMateria = db.Column(db.Integer, db.ForeignKey(Materia.id))
     idAlumno = db.Column(db.Integer, db.ForeignKey(Alumno.id))
     nota = db.Column(db.Integer)
     

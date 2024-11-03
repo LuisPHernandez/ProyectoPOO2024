@@ -201,7 +201,7 @@ def listar_materias():
 @app.route('/materias/<int:materia_id>/asignar', methods=['GET', 'POST'])
 def asignar_alumno(materia_id):
     materia = model.Materia.query.get(materia_id)
-    form = forms.AsignarAlumnoForm()  # Cambiar aquí para usar el formulario desde forms
+    form = forms.AsignarAlumnoForm()
 
     # Populamos las opciones del formulario
     form.materia_id.choices = [(materia.id, materia.nombre) for materia in model.Materia.query.all()]
