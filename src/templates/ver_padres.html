@@ -1,0 +1,32 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Lista de Padres</title>
+{% endblock %}
+
+{% block body %}
+<div class="lista-padres-contenedor">
+    <h2>Lista de Padres</h2>
+    <a href="{{ url_for('admin') }}" class="btn-primario">Regresar</a>
+    <table class="tabla-users">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre de Usuario</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for padre in padres %}
+            <tr>
+                <td>{{ padre.id }}</td>
+                <td>
+                    <a href="{{ url_for('asignar_alumno_padre_vista', padre_id=padre.id) }}">{{ padre.username }}</a>
+                </td>
+                <td>Padre</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
