@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hijos de {{ padre.username }}</title>
+</head>
+<body>
+    <h1>Hijos de {{ padre.username }}</h1>
+
+    <h2>Lista de hijos</h2>
+    <ul>
+        {% for alumno in alumnos %}
+            <li>{{ alumno.nombre }} - Grado: {{ alumno.grado }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

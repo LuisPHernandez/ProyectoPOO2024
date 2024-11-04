@@ -36,7 +36,7 @@ def login():
             elif usuario.tipo == 2:
                 return redirect(url_for('maestro'))
             elif usuario.tipo == 3:
-                return redirect(url_for('padre'))
+                return redirect(url_for('ver_hijos_padre', id=usuario.id))
         else:
             flash('Usuario o password inválido', 'error')
 
@@ -268,6 +268,26 @@ def editar_nota(relacion_id):
         flash("Nota actualizada con éxito")
         return redirect(url_for('notas_y_alumnos'))
     return render_template('editar_nota.html', relacion=relacion)
+
+
+@app.route('/padre/ver_hijos/<int:id>')
+def ver_hijos_padre(id):
+    padre = model.Usuario.query.get(id)
+    if not padre:
+        return "Error: El padre especificado no existe.", 404
+    
+    print(f"Padre encontrado: {padre.username}")  # Para verificar que se encontró el padre
+
+    alumnos_asignados = model.Alumno.query.join(
+        model.PadreAlumno, model.Alumno.id == model.PadreAlumno.idAlumno
+    ).filter(
+        model.PadreAlumno.idPadre == id
+    ).all()
+
+    print(f"Alumnos asignados: {[alumno.nombre for alumno in alumnos_asignados]}")  # Para verificar los alumnos
+
+    return render_template('padre.html', padre=padre, alumnos=alumnos_asignados)
+
 
 
 
