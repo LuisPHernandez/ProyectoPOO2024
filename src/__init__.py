@@ -216,7 +216,6 @@ def asignar_alumno(materia_id):
             asignacion = model.MateriaAlumno(idMateria=materia_id, idAlumno=alumno_id)
             db.session.add(asignacion)
         db.session.commit()
-        flash('Alumnos asignados correctamente.', 'success')
         return redirect(url_for('listar_materias'))
     return render_template('seleccionar_alumnos.html', form=form, materia=materia)
 
@@ -228,7 +227,7 @@ def notas_y_alumnos():
         .all()
     
     return render_template("notas_y_alumnos.html", relaciones=relaciones)
-
+=======
 @app.route('/admin/ver-padres')
 def ver_padres():
     padres = model.Usuario.query.filter_by(tipo=3).all()  # tipo 3 corresponde a los usuarios de tipo "padre"
