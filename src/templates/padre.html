@@ -10,7 +10,10 @@
     <h2>Lista de hijos</h2>
     <ul>
         {% for alumno in alumnos %}
-            <li>{{ alumno.nombre }} - Grado: {{ alumno.grado }}</li>
+            <li>
+                {{ alumno.nombre }} - Grado: {{ alumno.grado }}
+                <a href="{{ url_for('ver_notas_hijo', id=alumno.id) }}">Ver Notas</a>
+            </li>
         {% endfor %}
     </ul>
 </body>

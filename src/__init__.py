@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, flash 
+from flask import Flask, render_template, url_for, request, redirect, flash, session
 import flask_sqlalchemy
 from src import forms
 from sqlalchemy.exc import IntegrityError
@@ -280,7 +280,7 @@ def ver_hijos_padre(id):
     if not padre:
         return "Error: El padre especificado no existe.", 404
     
-    print(f"Padre encontrado: {padre.username}")  # Para verificar que se encontró el padre
+    print(f"Padre encontrado: {padre.username}")  
 
     alumnos_asignados = model.Alumno.query.join(
         model.PadreAlumno, model.Alumno.id == model.PadreAlumno.idAlumno
@@ -288,9 +288,15 @@ def ver_hijos_padre(id):
         model.PadreAlumno.idPadre == id
     ).all()
 
-    print(f"Alumnos asignados: {[alumno.nombre for alumno in alumnos_asignados]}")  # Para verificar los alumnos
+    print(f"Alumnos asignados: {[alumno.nombre for alumno in alumnos_asignados]}")  
 
     return render_template('padre.html', padre=padre, alumnos=alumnos_asignados)
+
+@app.route('/padre/ver_notas/<int:id>', methods=['GET'])
+def ver_notas_hijo(id):
+    alumno = model.Alumno.query.get_or_404(id)
+    return render_template('notas_hijo.html', alumno=alumno)
+
 
 
 
