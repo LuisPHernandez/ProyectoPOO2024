@@ -1,0 +1,21 @@
+{% extends "base_loggedin.html" %}
+
+{% block head %}
+<title>Editar Nota</title>
+{% endblock %}
+
+{% block body %}
+<div class="editar-nota-container">
+    <h2>Editar Nota para {{ alumno.nombre }} en {{ materia.nombre }}</h2>
+
+    <form action="{{ url_for('editar_nota', relacion_id=relacion.relacion) }}" method="post">
+        <label for="nota">Nota:</label>
+        <input type="number" name="nota" id="nota" value="{{ relacion.nota or '' }}" min="0" max="100" required>
+
+        <div class="form-buttons">
+            <input type="submit" value="Guardar Cambios" class="btn-primario">
+            <a href="{{ url_for('notas_y_alumnos') }}" class="btn-secundario">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

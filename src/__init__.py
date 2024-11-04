@@ -256,3 +256,6 @@ def guardar_asignacion_alumno(padre_id, alumno_id):
     
     flash("Alumno asignado correctamente al padre.", "success")
     return redirect(url_for('asignar_alumno_padre_vista', padre_id=padre_id))
+
+
+
