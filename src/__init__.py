@@ -237,9 +237,9 @@ def asignar_alumno_padre_vista(padre_id):
     # Obtener el padre seleccionado
     padre = model.Usuario.query.get_or_404(padre_id)
     
-    # Obtener los alumnos no asignados
+    # Obtener los alumnos no asignados a un padre
     alumnos_no_asignados = model.Alumno.query.filter(~model.Alumno.id.in_(
-        db.session.query(model.MateriaAlumno.idAlumno).distinct()
+        db.session.query(model.PadreAlumno.idAlumno).distinct()
     )).all()
 
     return render_template('asignar_alumno_padre.html', padre=padre, alumnos=alumnos_no_asignados)
@@ -250,11 +250,10 @@ def guardar_asignacion_alumno(padre_id, alumno_id):
     alumno = model.Alumno.query.get_or_404(alumno_id)
     
     # Crear la relación entre el padre y el alumno
-    relacion = model.MateriaAlumno(idMateria=None, idAlumno=alumno_id)  # Ajusta la relación según tus modelos
+    relacion = model.PadreAlumno(idPadre=padre_id, idAlumno=alumno_id)
     db.session.add(relacion)
     db.session.commit()
     
-    flash("Alumno asignado correctamente al padre.", "success")
     return redirect(url_for('asignar_alumno_padre_vista', padre_id=padre_id))
 
 
