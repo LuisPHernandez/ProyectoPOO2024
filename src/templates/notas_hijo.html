@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Notas de {{ alumno.nombre }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
 <body>
     <h1>Notas de {{ alumno.nombre }}</h1>
+    
+    <div class="lista-notas-contenedor">
+        <table class="tabla-notas_y_alumnos">
+            <thead>
+                <tr>
+                    <th>Materia</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Materia</th>
-                <th>Nota</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Aquí puedes añadir las filas de notas cuando estén disponibles -->
-            <tr>
-                <td colspan="2">No hay notas disponibles.</td>
-            </tr>
-        </tbody>
-    </table>
+    <a href="{{ url_for('ver_hijos_padre', id=alumno.id) }}">
+        <button class="btn-secundario">Volver</button>
+    </a>
 </body>
 </html>

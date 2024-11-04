@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Hijos de {{ padre.username }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
 <body>
     <h1>Hijos de {{ padre.username }}</h1>
 
-    <h2>Lista de hijos</h2>
-    <ul>
-        {% for alumno in alumnos %}
-            <li>
-                {{ alumno.nombre }} - Grado: {{ alumno.grado }}
-                <a href="{{ url_for('ver_notas_hijo', id=alumno.id) }}">Ver Notas</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="lista-user-contenedor">
+        <h2>Lista de hijos</h2>
+        <ul>
+            {% for alumno in alumnos %}
+                <li>
+                    {{ alumno.nombre }} - Grado: {{ alumno.grado }}
+                    <a href="{{ url_for('ver_notas_hijo', id=alumno.id) }}">
+                        <button class="btn-primario">Ver Notas</button>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
+
