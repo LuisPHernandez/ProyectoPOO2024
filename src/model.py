@@ -51,7 +51,13 @@ class MateriaAlumno(db.Model):
     idMateria = db.Column(db.Integer, db.ForeignKey(Materia.id))
     idAlumno = db.Column(db.Integer, db.ForeignKey(Alumno.id))
     nota = db.Column(db.Integer)
-    
+
+# Tabla de relación entre padre y alumno
+class PadreAlumno(db.Model):
+    __tablename__ = 'PadreAlumno'
+    relacion = db.Column(db.Integer, primary_key=True)
+    idPadre = db.Column(db.Integer, db.ForeignKey(Usuario.id))
+    idAlumno = db.Column(db.Integer, db.ForeignKey(Alumno.id))
     
 #################################################################################
 # Declaración de valores por defecto de base de datos
