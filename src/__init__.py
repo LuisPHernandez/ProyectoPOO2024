@@ -220,7 +220,6 @@ def asignar_alumno(materia_id):
         return redirect(url_for('listar_materias'))
     return render_template('seleccionar_alumnos.html', form=form, materia=materia)
 
-<<<<<<< HEAD
 @app.route('/notas_y_alumnos')
 def notas_y_alumnos():
     relaciones = db.session.query(model.MateriaAlumno, model.Alumno, model.Materia) \
@@ -229,7 +228,7 @@ def notas_y_alumnos():
         .all()
     
     return render_template("notas_y_alumnos.html", relaciones=relaciones)
-=======
+
 @app.route('/admin/ver-padres')
 def ver_padres():
     padres = model.Usuario.query.filter_by(tipo=3).all()  # tipo 3 corresponde a los usuarios de tipo "padre"
@@ -259,6 +258,19 @@ def guardar_asignacion_alumno(padre_id, alumno_id):
     
     flash("Alumno asignado correctamente al padre.", "success")
     return redirect(url_for('asignar_alumno_padre_vista', padre_id=padre_id))
+
+@app.route('/editar_nota/<int:relacion_id>', methods=['GET', 'POST'])
+def editar_nota(relacion_id):
+    # Lógica para editar la nota del alumno en la relación
+    relacion = model.MateriaAlumno.query.get_or_404(relacion_id)
+    if request.method == 'POST':
+        nueva_nota = request.form.get('nota')
+        relacion.nota = nueva_nota
+        db.session.commit()
+        flash("Nota actualizada con éxito")
+        return redirect(url_for('notas_y_alumnos'))
+    return render_template('editar_nota.html', relacion=relacion)
+
 
 
 
