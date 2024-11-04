@@ -227,7 +227,7 @@ def notas_y_alumnos():
         .all()
     
     return render_template("notas_y_alumnos.html", relaciones=relaciones)
-=======
+
 @app.route('/admin/ver-padres')
 def ver_padres():
     padres = model.Usuario.query.filter_by(tipo=3).all()  # tipo 3 corresponde a los usuarios de tipo "padre"
