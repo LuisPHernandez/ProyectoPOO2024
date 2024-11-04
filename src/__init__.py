@@ -268,7 +268,6 @@ def editar_nota(relacion_id):
         relacion.nota = nueva_nota
         db.session.commit()
         
-        flash("Nota actualizada con éxito")
         return redirect(url_for('notas_y_alumnos'))
 
     return render_template('editar_nota.html', alumno=alumno, materia=materia, relacion=relacion)
@@ -279,23 +278,27 @@ def ver_hijos_padre(id):
     padre = model.Usuario.query.get(id)
     if not padre:
         return "Error: El padre especificado no existe.", 404
-    
-    print(f"Padre encontrado: {padre.username}")  
 
     alumnos_asignados = model.Alumno.query.join(
         model.PadreAlumno, model.Alumno.id == model.PadreAlumno.idAlumno
     ).filter(
         model.PadreAlumno.idPadre == id
-    ).all()
-
-    print(f"Alumnos asignados: {[alumno.nombre for alumno in alumnos_asignados]}")  
+    ).all() 
 
     return render_template('padre.html', padre=padre, alumnos=alumnos_asignados)
 
-@app.route('/padre/ver_notas/<int:id>', methods=['GET'])
-def ver_notas_hijo(id):
-    alumno = model.Alumno.query.get_or_404(id)
-    return render_template('notas_hijo.html', alumno=alumno)
+@app.route('/padre/<int:idPadre>/ver_notas/<int:idHijo>', methods=['GET'])
+def ver_notas_hijo(idHijo, idPadre):
+    padre = model.Usuario.query.get_or_404(idPadre)
+    alumno = model.Alumno.query.get_or_404(idHijo)
+    materias = db.session.query(
+        model.Materia.nombre, model.MateriaAlumno.nota
+    ).join(
+        model.MateriaAlumno, model.Materia.id == model.MateriaAlumno.idMateria
+    ).filter(
+        model.MateriaAlumno.idAlumno == idHijo
+    ).all()
+    return render_template('notas_hijo.html', alumno=alumno, padre=padre, materias=materias)
 
 
 
