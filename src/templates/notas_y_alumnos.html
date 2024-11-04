@@ -12,7 +12,7 @@
             <th>Materia</th>
             <th>Alumno</th>
             <th>Nota</th>
-            <th>Acción</th> <!-- Nueva columna para el botón de edición -->
+            <th>Acción</th>
         </tr>
         {% for relacion, alumno, materia in relaciones %}
         <tr>
@@ -26,7 +26,7 @@
                 {% endif %}
             </td>
             <td>
-                <!-- Botón de editar nota para cada alumno y materia -->
+
                 <form action="{{ url_for('editar_nota', relacion_id=relacion.relacion) }}" method="get">
                     <input type="submit" value="Editar Nota" class="btn-primario">
                 </form>
