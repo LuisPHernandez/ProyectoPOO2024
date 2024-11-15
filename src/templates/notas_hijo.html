@@ -1,39 +1,30 @@
 {% extends "base_loggedin.html" %}
 
 {% block head %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Notas de {{ alumno.nombre }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-</head>
+<title>Notas de {{ alumno.nombre }}</title>
 {% endblock %}
 
 {% block body %}
-<body>
-    <h1>Notas de {{ alumno.nombre }}</h1>
-    <a href="{{ url_for('ver_hijos_padre', id=padre.id) }}">
-        <button class="btn-primario">Regresar</button>
-    </a>
-    <div class="lista-notas-contenedor">
-        <table class="tabla-notas_y_alumnos">
-            <thead>
-                <tr>
-                    <th>Materia</th>
-                    <th>Nota</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for materia, nota in materias %}
-                <tr>
-                    <td>{{ materia }}</td>
-                    <td>{{ nota }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+<h1>Notas de {{ alumno.nombre }}</h1>
+<a href="{{ url_for('ver_hijos_padre', id=padre.id) }}">
+    <button class="btn-primario">Regresar</button>
+</a>
+<div class="lista-notas-contenedor">
+    <table class="tabla-notas-y-alumnos">
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Nota</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for materia, nota in materias %}
+            <tr>
+                <td>{{ materia }}</td>
+                <td>{{ nota }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

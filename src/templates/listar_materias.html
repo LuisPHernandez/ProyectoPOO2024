@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block body %}
+<h1>Lista de Materias</h1>
 <div class="lista-materia-contenedor">
     <a href="{{ url_for('admin')}}" class="btn-primario">Regresar</a>
-    <h2>Lista de Materias</h2>
     <a href="{{ url_for('editar_materia', materiaid=0) }}" class="btn-primario">Agregar Materia</a>
     <ul class="lista-materias">
         {% for materia in materias %}

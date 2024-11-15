@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block body %}
+<h1>Asignar Alumno a {{ padre.username }}</h1>
 <div class="asignar-alumno-contenedor">
-    <h2>Asignar Alumno a {{ padre.username }}</h2>
     <a href="{{ url_for('ver_padres') }}" class="btn-primario">Regresar</a>
     <table class="tabla-users">
         <thead>

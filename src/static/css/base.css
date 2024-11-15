@@ -27,13 +27,27 @@ h2 {
 }
 
 .home-contenedor,
-.login-contenedor,
 .user-edit-contenedor,
 .lista-user-contenedor,
 .admin-contenedor,
 .materia-edit-contenedor,
-.lista-materia-contenedor .lista-alumnos-contenedor {
-    margin: 50px auto;
+.lista-materia-contenedor,
+.lista-alumnos-contenedor,
+.lista-padres-contenedor,
+.asignar-alumno-contenedor,
+.lista-notas-y-alumnos-contenedor,
+.lista-notas-contenedor {
+    margin: 0px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.login-contenedor {
+    margin: 60px auto;
     max-width: 600px;
     padding: 20px;
     background-color: #ffffff;
@@ -121,9 +135,16 @@ h2 {
 /* Tablas */
 .tabla-users,
 .tabla-materias,
-.tabla-alumnos,
-.tabla-notas_y_alumnos {
-    width: 100%;
+.tabla-alumnos {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 20px 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.tabla-notas-y-alumnos {
+    width: 94%;
     border-collapse: collapse;
     margin: 20px 20px;
     background-color: #ffffff;
@@ -134,8 +155,8 @@ h2 {
 .tabla-users td,
 .tabla-materias th,
 .tabla-materias td,
-.tabla-notas_y_alumnos th,
-.tabla-notas_y_alumnos td {
+.tabla-notas-y-alumnos th,
+.tabla-notas-y-alumnos td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     text-align: left;
@@ -143,7 +164,7 @@ h2 {
 
 .tabla-users th,
 .tabla-materias th,
-.tabla-notas_y_alumnos th {
+.tabla-notas-y-alumnos th {
     background-color: #3498db;
     color: white;
 }
