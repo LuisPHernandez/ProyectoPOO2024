@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block body %}
+<a href="{{ url_for('listar_materias')}}" class="btn-primario">Regresar</a>
 <div class="asignar-alumnos-contenedor" style="text-align: center;">
-    <a href="{{ url_for('listar_materias')}}" class="btn-primario">Regresar</a>
     <h2>Asignar Alumnos a {{ materia.nombre }}</h2>
     <form method="POST" class="asignar-alumnos-form">
         {{ form.hidden_tag() }}
