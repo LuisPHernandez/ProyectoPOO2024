@@ -299,9 +299,3 @@ def ver_notas_hijo(idHijo, idPadre):
         model.MateriaAlumno.idAlumno == idHijo
     ).all()
     return render_template('notas_hijo.html', alumno=alumno, padre=padre, materias=materias)
-
-
-
-
-
-
