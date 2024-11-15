@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block body %}
+<h2>Lista de Materias</h2>
 <div class="lista-materia-contenedor">
-    <h2>Lista de Materias</h2>
     <a href="{{ url_for('admin')}}" class="btn-primario">Regresar</a>
     <a href="{{ url_for('editar_materia', materiaid = 0)}}" class="btn-primario">Agregar Materia</a>
     <table class="tabla-materias">
@@ -30,7 +30,6 @@
             </tr>
             {%- endfor %}
         </tbody>
-
     </table>
 </div>
 
