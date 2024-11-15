@@ -1,9 +1,9 @@
 body {
-    color: #666666;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.80857;
-    font-weight: normal;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    /* Gradiente suave */
+    margin: 0;
+    font-family: sans-serif;
+    color: #333;
 }
 
 h1,
@@ -44,7 +44,8 @@ h2 {
 }
 
 /* Botones */
-.btn-primario, .btn-secundario {
+.btn-primario,
+.btn-secundario {
     margin: 15px;
     padding: 10px 20px;
     border: none;
@@ -185,7 +186,7 @@ h2 {
     font-size: 16px;
     transition: border-color 0.3s;
 }
-    
+
 .select-alumnos:hover {
     border-color: #0056b3;
 }
