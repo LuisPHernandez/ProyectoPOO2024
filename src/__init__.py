@@ -69,12 +69,11 @@ def user_edit(userid):
     user = model.Usuario.query.filter(model.Usuario.id == userid).first()
 
     if form.cancel.data:
-        flash('Operación cancelada, no se tomó ninguna acción.')
         return redirect(url_for('user_list'))
 
     if form.delete.data:
         if ((user is None) or (userid == 0)):
-            flash('Imposible borrar usuario inexistente.')
+            flash('')
         else:
             db.session.delete(user)
             db.session.commit()
@@ -89,11 +88,8 @@ def user_edit(userid):
             db.session.commit()
         except IntegrityError as ex:
             db.session.rollback()
-            flash(
-                'Nombre de usuario duplicado, imposible insertar', 'error')
         except Exception as ex: 
             db.session.rollback()
-            flash(str(ex), 'error')
         else:
             db.session.flush()
             return redirect(url_for('user_list'))
@@ -134,12 +130,11 @@ def editar_materia(materiaid):
     materia = model.Materia.query.filter(model.Materia.id == materiaid).first()
 
     if form.cancel.data:
-        flash('Operación cancelada, no se tomó ninguna acción.')
         return redirect(url_for('lista_materia'))
     
     if form.delete.data:
         if ((materia is None) or (materiaid == 0)):
-            flash('Imposible borrar materia inexistente.')
+            flash('')
         else:
             db.session.delete(materia)
             db.session.commit()
@@ -154,10 +149,8 @@ def editar_materia(materiaid):
             db.session.commit()
         except IntegrityError as ex:
             db.session.rollback()
-            flash('Nombre de materia duplicado, imposible insertar', 'error')
         except Exception as ex: 
             db.session.rollback()
-            flash(str(ex), 'error')
         else:
             db.session.flush()
             return redirect(url_for('lista_materia'))
